@@ -1,0 +1,8 @@
+.todoList{
+    margin: 10%;
+    max-width: 40%;
+    background-color: rgba(37, 80, 197, 0.267);
+    text-align: center;
+    border-radius: 10%;
+    padding: 10%;
+}
