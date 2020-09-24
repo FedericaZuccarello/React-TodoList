@@ -14,7 +14,7 @@ class App extends React.Component{
     return(
         <div className='todoList'>
           <AddTodo addTodoFn = {this.addTodo}/>
-          <TodoList updateTodoFn={this.updateTodo} todos={this.state.todos}/>
+          <TodoList removeTodoFn={this.removeTodo} updateTodoFn={this.updateTodo} todos={this.state.todos}/>
         </div>  
       ); 
   }
@@ -63,6 +63,22 @@ class App extends React.Component{
     //save on the storage new updated
     localStorage.setItem('todos', JSON.stringify(this.state.todos));
   }
+
+  removeTodo = async (todo) => {
+    const newTodos = this.state.todos.map(
+      _todo => {
+        if(todo !== _todo){
+          return _todo
+        }
+      }
+    );
+    await this.setState({todos : newTodos});
+    
+    //update the storage
+    localStorage.setItem('todos', JSON.stringify(this.state.todos));
+  }
+
+
 }
 
 export default App;
